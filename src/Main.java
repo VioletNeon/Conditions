@@ -49,6 +49,34 @@ public class Main {
         } else {
             System.out.println(randomYear + " год не является високосным");
         }
+
+
+        byte minDistance = 1;
+        byte maxDistance = 127;
+        byte deliveryDistance = (byte) getRandomNumber(minDistance, maxDistance);
+        byte deliveryTime = 0;
+        boolean isMoreZeroKM = deliveryDistance > 0;
+        boolean isMoreThanTwentyKM = deliveryDistance > 20;
+        boolean isMoreThanSixtyKM = deliveryDistance > 60;
+        boolean isMoreThanOneHundredKM = deliveryDistance > 100;
+
+        if (isMoreZeroKM) {
+            ++deliveryTime;
+        }
+
+        if (isMoreThanTwentyKM) {
+            ++deliveryTime;
+        }
+
+        if (isMoreThanSixtyKM) {
+            ++deliveryTime;
+        }
+
+        if (isMoreThanOneHundredKM) {
+            System.out.println("Доставки на расстояние: " + deliveryDistance + " км - нет");
+        } else {
+            System.out.println("Потребуется дней: " + deliveryTime + " для доставки на расстояние: " + deliveryDistance + " км");
+        }
     }
 
     public static short getRandomNumber(short min, short max) {
