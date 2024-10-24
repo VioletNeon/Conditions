@@ -77,6 +77,36 @@ public class Main {
         } else {
             System.out.println("Потребуется дней: " + deliveryTime + " для доставки на расстояние: " + deliveryDistance + " км");
         }
+
+        byte minMonth = 1;
+        byte maxMonth = 15;
+        byte monthNumber = (byte) getRandomNumber(minMonth, maxMonth);
+
+        switch (monthNumber) {
+            case 12:
+            case 1:
+            case 2:
+                System.out.println(monthNumber + " месяц" + " - это зима");
+                break;
+            case 3:
+            case 4:
+            case 5:
+                System.out.println(monthNumber + " месяц" + " - это весна");
+                break;
+            case 6:
+            case 7:
+            case 8:
+                System.out.println(monthNumber + " месяц" + " - это лето");
+                break;
+            case 9:
+            case 10:
+            case 11:
+                System.out.println(monthNumber + " месяц" + " - это осень");
+                break;
+            default:
+                System.out.println(monthNumber + " - такого месяца не существует");
+        }
+
     }
 
     public static short getRandomNumber(short min, short max) {
