@@ -12,10 +12,10 @@ public class Main {
             System.out.println("Установите версию приложения для iOS по ссылке");
         }
 
-        short maxYear = 2024;
-        short minYear = 2005;
+        short maxDeviceYear = 2024;
+        short minDeviceYear = 2005;
         short conditionalYear = 2015;
-        short clientDeviceYear = getRandomNumber(minYear, maxYear);
+        short clientDeviceYear = getRandomNumber(minDeviceYear, maxDeviceYear);
         boolean isBeforeConditionalYear = clientDeviceYear < conditionalYear;
 
         if (isAndroid) {
@@ -30,6 +30,24 @@ public class Main {
             } else {
                 System.out.println("Установите версию приложения для iOS по ссылке");
             }
+        }
+
+        short startLeapYear = 1584;
+        short minYear = 1584;
+        short maxYear = 2030;
+
+        short randomYear = getRandomNumber(minYear, maxYear);
+        short yearsDifference = (short) (randomYear - startLeapYear);
+
+        boolean isForthYear = yearsDifference % 4 == 0;
+        boolean isHundredYear = yearsDifference % 100 == 0;
+        boolean isFourthHundredYear = yearsDifference % 400 == 0;
+        boolean isLeapYear = isFourthHundredYear || (!isHundredYear && isForthYear);
+
+        if (isLeapYear) {
+            System.out.println(randomYear + " год является високосным");
+        } else {
+            System.out.println(randomYear + " год не является високосным");
         }
     }
 
