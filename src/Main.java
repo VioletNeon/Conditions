@@ -1,43 +1,34 @@
 public class Main {
     public static void main(String[] args) {
-        byte logFalse = 0;
-        byte logTrue = 1;
-        short clientOS = getRandomNumber(logFalse, logTrue);
+        short clientOS = 0;
         boolean isAndroid = clientOS == 1;
         boolean isIOS = clientOS == 0;
 
         if (isAndroid) {
             System.out.println("Установите версию приложения для Android по ссылке");
+        } else {
+            System.out.println("Установите версию приложения для iOS по ссылке");
+        }
+
+        short conditionalYear = 2015;
+        short clientDeviceYear = 2015;
+        boolean isBeforeConditionalYear = clientDeviceYear < conditionalYear;
+
+        if (isAndroid && isBeforeConditionalYear) {
+            System.out.println("Установите облегченную версию приложения для Android по ссылке");
+        } else if (isAndroid) {
+            System.out.println("Установите версию приложения для Android по ссылке");
+        }
+
+        if (isIOS && isBeforeConditionalYear) {
+            System.out.println("Установите облегченную версию приложения для iOS по ссылке");
         } else if (isIOS) {
             System.out.println("Установите версию приложения для iOS по ссылке");
         }
 
-        short maxDeviceYear = 2024;
-        short minDeviceYear = 2005;
-        short conditionalYear = 2015;
-        short clientDeviceYear = getRandomNumber(minDeviceYear, maxDeviceYear);
-        boolean isBeforeConditionalYear = clientDeviceYear < conditionalYear;
-
-        if (isAndroid) {
-            if (isBeforeConditionalYear) {
-                System.out.println("Установите облегченную версию приложения для Android по ссылке");
-            } else {
-                System.out.println("Установите версию приложения для Android по ссылке");
-            }
-        } else if (isIOS) {
-            if (isBeforeConditionalYear) {
-                System.out.println("Установите облегченную версию приложения для iOS по ссылке");
-            } else {
-                System.out.println("Установите версию приложения для iOS по ссылке");
-            }
-        }
-
         short startLeapYear = 1584;
-        short minYear = 1584;
-        short maxYear = 2030;
-
-        short randomYear = getRandomNumber(minYear, maxYear);
-        short yearsDifference = (short) (randomYear - startLeapYear);
+        short year = 2021;
+        short yearsDifference = (short) (year - startLeapYear);
 
         boolean isForthYear = yearsDifference % 4 == 0;
         boolean isHundredYear = yearsDifference % 100 == 0;
@@ -45,42 +36,28 @@ public class Main {
         boolean isLeapYear = isFourthHundredYear || (!isHundredYear && isForthYear);
 
         if (isLeapYear) {
-            System.out.println(randomYear + " год является високосным");
+            System.out.println(year + " год является високосным");
         } else {
-            System.out.println(randomYear + " год не является високосным");
+            System.out.println(year + " год не является високосным");
         }
 
-
-        byte minDistance = 1;
-        byte maxDistance = 127;
-        byte deliveryDistance = (byte) getRandomNumber(minDistance, maxDistance);
-        byte deliveryTime = 0;
-        boolean isMoreZeroKM = deliveryDistance > 0;
-        boolean isMoreThanTwentyKM = deliveryDistance > 20;
-        boolean isMoreThanSixtyKM = deliveryDistance > 60;
+        byte deliveryDistance = 95;
+        boolean isLessZeroKM = deliveryDistance < 20;
+        boolean isBetweenTwentyAndSixtyKM = deliveryDistance > 20 && deliveryDistance <= 60;
+        boolean isBetweenSixtyAndOneHundredKM = deliveryDistance > 60 && deliveryDistance <= 100;
         boolean isMoreThanOneHundredKM = deliveryDistance > 100;
 
-        if (isMoreZeroKM) {
-            ++deliveryTime;
-        }
-
-        if (isMoreThanTwentyKM) {
-            ++deliveryTime;
-        }
-
-        if (isMoreThanSixtyKM) {
-            ++deliveryTime;
-        }
-
-        if (isMoreThanOneHundredKM) {
+        if (isLessZeroKM) {
+            System.out.println("Потребуется дней: " + 1 + " для доставки на расстояние: " + deliveryDistance + " км");
+        } else if (isBetweenTwentyAndSixtyKM) {
+            System.out.println("Потребуется дней: " + 2 + " для доставки на расстояние: " + deliveryDistance + " км");
+        } else if (isBetweenSixtyAndOneHundredKM) {
+            System.out.println("Потребуется дней: " + 3 + " для доставки на расстояние: " + deliveryDistance + " км");
+        } else if (isMoreThanOneHundredKM) {
             System.out.println("Доставки на расстояние: " + deliveryDistance + " км - нет");
-        } else {
-            System.out.println("Потребуется дней: " + deliveryTime + " для доставки на расстояние: " + deliveryDistance + " км");
         }
 
-        byte minMonth = 1;
-        byte maxMonth = 15;
-        byte monthNumber = (byte) getRandomNumber(minMonth, maxMonth);
+        byte monthNumber = 13;
 
         switch (monthNumber) {
             case 12:
@@ -107,9 +84,5 @@ public class Main {
                 System.out.println(monthNumber + " - такого месяца не существует");
         }
 
-    }
-
-    public static short getRandomNumber(short min, short max) {
-        return (short) (Math.floor((float) Math.random() * (max - min + 1)) + min);
     }
 }
